@@ -53,7 +53,7 @@ section > .label{display:block;margin-bottom:28px}
 .about{font-family:var(--display);font-size:clamp(22px,3vw,28px);line-height:1.45;color:var(--fg)}
 .about span{color:var(--muted)}
 
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
 .facts b{display:block;font-family:var(--display);font-weight:400;font-size:34px}
 .facts small{color:var(--muted);font-size:14px}
 
@@ -102,7 +102,9 @@ nav ul a.active{color:var(--fg)}
 nav ul a.active::after{transform:scaleX(1)}
 
 /* rotating phrase */
-.hero p.rot-line{color:var(--fg);font-size:clamp(20px,2.6vw,24px);margin-top:22px}
+.hero p.rot-line{color:var(--fg);margin-top:22px;white-space:nowrap;max-width:none;
+  font-size:clamp(14px, calc((min(100vw - 32px, 760px) - 274px) / 23.5), 21px)}
+@media (max-width:720px){.hero p.rot-line{font-size:clamp(13px, calc((100vw - 32px) / 23.5), 21px)}}
 .rot{color:var(--accent);border-right:2px solid var(--accent);padding-right:3px}
 .hero p.rot-line + p{margin-top:8px}
 
@@ -224,7 +226,7 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
   nav{margin-bottom:64px}
   section{margin-top:80px}
   .item{grid-template-columns:1fr;gap:6px}
-  .facts{grid-template-columns:1fr;gap:16px}
+  .facts{grid-template-columns:1fr 1fr;gap:20px 16px}
   .skills{grid-template-columns:1fr}
 }
 /* richer scroll choreography */
@@ -239,7 +241,7 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
   .item.rv .when{transition:opacity .9s .25s,transform .9s .25s cubic-bezier(.16,1,.3,1)}
   .item.rv.pre .when{opacity:0;transform:translateX(-16px)}
   .facts.rv > div{transition:opacity .9s,transform .9s cubic-bezier(.16,1,.3,1)}
-  .facts.rv > div:nth-child(2){transition-delay:.12s}.facts.rv > div:nth-child(3){transition-delay:.24s}
+  .facts.rv > div:nth-child(2){transition-delay:.12s}.facts.rv > div:nth-child(3){transition-delay:.24s}.facts.rv > div:nth-child(4){transition-delay:.36s}
   .facts.rv.pre{opacity:1;transform:none;filter:none}
   .facts.rv.pre > div{opacity:0;transform:translateY(30px)}
   .showcase.rv .sc-art i{transition:transform 1s cubic-bezier(.16,1,.3,1),opacity 1s,filter .6s}
@@ -291,6 +293,7 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
     <span class="label">About</span>
     <p class="about">I recently finished my B.Tech in Computer Science. <span>I enjoy taking slow, manual work and turning it into something simple and repeatable,</span> whether that's an app powered by AI or a content workflow a whole team can follow.</p>
     <div class="facts">
+      <div><b data-count="4" data-suf=" years">4 years</b><small>Building websites</small></div>
       <div><b data-count="1" data-suf=" year">1 year</b><small>Production AI work</small></div>
       <div><b data-count="30" data-suf="M+">30M+</b><small>Content reach</small></div>
       <div><b data-count="50" data-suf="+">50+</b><small>Major brands worked with</small></div>
@@ -570,7 +573,7 @@ nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
   }
 
   /* rotating phrase */
-  var phrases=["save people time","turn notes into quizzes","support people in recovery","help brands create faster"];
+  var phrases=["save people time","write quizzes","support recovery","help brands create"];
   var rot=document.getElementById("rot");
   if(rot && !reduce){
     var pi=0, ci=phrases[0].length, del=true;
